@@ -26,17 +26,60 @@ document.querySelector('.confirm-btn').addEventListener('click', function() {
 
 // Función para manejar la transferencia
 document.querySelector('.send-btn').addEventListener('click', function() {
-    const cuentaDestino = document.querySelector('input[placeholder="Número de cuenta"]').value;
-    const cantidad = document.querySelectorAll('.form-control')[1].value; // Asumiendo que es el segundo input
-    if (cuentaDestino && cantidad) {
-        guardarTransaccion('Transferencia', { cuentaDestino: cuentaDestino, cantidad: cantidad });
+    const cuentaDestino = document.getElementById('numeroCuenta').value.trim(); // Cambiado a getElementById
+    const cantidad = document.querySelectorAll('.form-control')[1].value.trim(); // Asegúrate de que este índice sea correcto
+
+    // Validar que ambos campos no estén vacíos
+    if (!cuentaDestino) {
         Swal.fire({
-            title: '¡Transferencia Exitosa!',
-            text: 'Su transferencia ha sido procesada correctamente.',
-            icon: 'success',
+            title: 'Error',
+            text: 'Por favor, ingrese un número de cuenta.',
+            icon: 'error',
             confirmButtonText: 'Aceptar'
         });
+        return;
     }
+
+    if (!cantidad) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, ingrese una cantidad.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+        return;
+    }
+
+    // Verificar si la cantidad es un número válido
+    if (isNaN(cantidad) || Number(cantidad) <= 0) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, ingrese una cantidad válida.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+        return;
+    }
+
+    // Validar el número de cuenta (debe ser exactamente 7 dígitos)
+    if (!/^\d{7}$/.test(cuentaDestino)) {
+        Swal.fire({
+            title: 'Error',
+            text: 'El número de cuenta debe tener exactamente 7 dígitos.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+        return;
+    }
+
+    // Guardar transacción
+    guardarTransaccion('Transferencia', { cuentaDestino: cuentaDestino, cantidad: cantidad });
+    Swal.fire({
+        title: '¡Transferencia Exitosa!',
+        text: 'Su transferencia ha sido procesada correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    });
 });
 
 // Función para manejar la recarga de saldo celular

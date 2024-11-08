@@ -145,7 +145,8 @@
                                     <div class="popup-content">
                                         <h2>Transferir</h2>
                                         <p>Ingrese los detalles de la transferencia:</p>
-                                        <input type="text" placeholder="Número de cuenta" class="form-control" />
+                                        <label for="numeroCuenta">Número de Cuenta:</label>
+                                        <input type="text" id="numeroCuenta" name="numeroCuenta" maxlength="7" required pattern="\d{7}">
                                         <input type="number" placeholder="Cantidad a transferir" class="form-control" />
                                         <a href="#transferenciaExitosaPopup" class="send-btn">Enviar</a>
                                         <a href="#" class="close-btn">Cerrar</a>
