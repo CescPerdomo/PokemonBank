@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Movimientos</title>
+    <link rel="stylesheet" href="styles/Movimientos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/pokebola.webp" alt="Logo" />
+            <p>Pekemon Bank</p>
+        </div>
+        <nav>
+            <a href="Movimientos.html">Consultar saldo</a>
+            <a href="PokemonBank_Cajero.html">Depositar</a>
+            <a href="PokemonBank_Cajero.html">Transferir</a>
+            <a href="PokemonBank_Cajero.html">Pago de servicios</a>
+            <a href="PokemonBank_Cajero.html">Salir</a>
+        </nav>
+        <div class="mascot">
+            <p>Fenando</p>
+            <img src="img/pikachu.png" alt="Pikachu" />
+        </div>
+    </header>
+
+    <main>
+        <section class="consulta">
+            <h1>Consulta de movimientos</h1>
+            <form>
+                <label for="cuenta">Cuenta:</label>
+                <select id="cuenta">
+                    <option>Seleccionar</option>
+                    <option>Tarjeta de Ahorro</option>
+                    <option>Tarjeta de Credito Mastercard</option>
+                    <option>Tarjeta de Credoto VISA</option>
+                </select>
+
+                <label for="movimiento">Tipo de movimiento:</label>
+                <select id="movimiento">
+                    <option>Todos los tipos</option>
+                    <option>Transferencia</option>
+                    <option>Compras</option>
+                    <option>Todos</option>
+                </select>
+
+                <label for="fecha-desde">Fecha desde:</label>
+                <input type="date" id="fecha-desde">
+
+                <label for="fecha-hasta">Fecha hasta:</label>
+                <input type="date" id="fecha-hasta">
+
+                <label for="monto-desde">Monto desde:</label>
+                <input type="text" id="monto-desde">
+
+                <label for="monto-hasta">Monto hasta:</label>
+                <input type="text" id="monto-hasta">
+
+                
+                <a href="Buscar.html" class="btn-outline">Buscar</a>
+
+            </form>
+        </section>
+
+        <aside>
+            <div class="davipuntos">
+                <h2>Pokepuntos Disponibles</h2>
+                <p>VISA CLÁSICA INTERNACIONAL</p>
+                <p>4101</p>
+                <p>5,509</p>
+            </div>
+
+            <div class="tipo-cambio">
+                <h2>Tipo de cambio</h2>
+                <p>Moneda | Compra | Venta</p>
+                <p>EUR | $1.1800 | $1.2500</p>
+                <p>Tipo de cambio sujeto a variaciones</p>
+            </div>
+        
+            <div class="tipo-cambio">
+                <h2>Grafico de Rendimiento</h2>
+                <a href="grafica.html">Ver gráfico completo</a>
+                
+            </div> 
+        
+        </aside>
+    </main>
+</body>
+</html>
