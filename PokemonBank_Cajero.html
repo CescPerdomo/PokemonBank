@@ -287,3 +287,129 @@
     <script src="./js/script1.js"></script>    
 </body>
 </html>
+
+
+<style>
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.chat-icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chat-window {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.chat-header {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-messages {
+    height: 300px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-input {
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.chat-input button {
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatButton = document.getElementById('chatButton');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const sendMessage = document.getElementById('sendMessage');
+    const messageInput = document.getElementById('messageInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    chatButton.addEventListener('click', () => {
+        chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
+    });
+
+    closeChat.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
+    });
+
+    sendMessage.addEventListener('click', sendUserMessage);
+    messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendUserMessage();
+    });
+
+    function sendUserMessage() {
+        const message = messageInput.value.trim();
+        if (message) {
+            addMessage('user', message);
+            messageInput.value = '';
+            setTimeout(() => {
+                addMessage('bot', 'Gracias por tu mensaje. Un representante te atenderá pronto.');
+            }, 1000);
+        }
+    }
+
+    function addMessage(type, text) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}-message`;
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+});
+</script>

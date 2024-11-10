@@ -99,6 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('transacciones', JSON.stringify(transacciones));
     });
 
+
+
     // Funcion para manejar los retiros
     document.querySelector('#retirarPopup .withdraw-btn').addEventListener('click', function(e) {
         e.preventDefault();

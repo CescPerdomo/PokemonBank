@@ -69,5 +69,67 @@ function login() {
     }
 }
 
+//interaccion con el usuario
+function toggleChat() {
+    const messages = document.getElementById('chatMessages');
+    messages.style.display = messages.style.display === 'none' ? 'block' : 'none';
+}
+
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    
+    if (message) {
+        addMessage(message, 'user-message');
+        input.value = '';
+        
+        // Bot response
+        setTimeout(() => {
+            if (message.toLowerCase().includes('pin')) {
+                addMessage('Para ingresar tu PIN, simplemente escribe los 4 números en el campo correspondiente. ¿Necesitas más ayuda?', 'bot-message');
+                addMessage('Sigues ahi?');
+                addMessage('Podrias brindarnos un numero de telefono para orientarte mejor');
+            } else {
+                addMessage('¡Hola! Soy Pikachu ¿En qué puedo ayudarte? Si necesitas ayuda con tu PIN, solo pregúntame.', 'bot-message');
+            }
+        }, 1000);
+    }
+}
+
+function addMessage(text, className) {
+    const messages = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${className}`;
+    messageDiv.textContent = text;
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight;
+}
+
+// Initial bot message
+window.onload = function() {
+    setTimeout(() => {
+        addMessage('¡Hola! ¿Necesitas ayuda para ingresar tu PIN?', 'bot-message');
+    }, 1000);
+    // Add possible responses
+    setTimeout(() => {
+        const responses = [
+            "¿Te gustaría saber más sobre nuestros servicios?",
+            "¿Es tu primera vez usando PokemonBank?",
+            "¿Puedo ayudarte con algo más?",
+            "Si tienes dudas sobre el PIN, estoy aquí para ayudarte"
+        ];
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        addMessage(randomResponse, 'bot-message');
+    }, 3000);
+
+    // Add Enter key support
+    document.getElementById('userInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+};
+
 // Añadimos un evento al botón para que ejecute la función login al hacer clic
 document.querySelector(".btn-primary").addEventListener("click", login);
+
