@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         cancelButtonText: 'No'
                     }).then((printResult) => {
                         if (printResult.isConfirmed) {
-                            // Aquí iría la lógica de impresión
+                            
+                            // Impresion de Comprobante
                             console.log('Imprimiendo comprobante...');
                             const contenidoComprobante = `
                                 === COMPROBANTE DE DEPÓSITO ===
