@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+header {
+    background-color: #ff4c4c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+header .logo img {
+    height: 60px;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+}
+
+header nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #7c2336; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+header .mascot img {
+    height: 60px;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.consulta {
+    flex: 3;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.consulta h1 {
+    margin-bottom: 20px;
+}
+
+.consulta form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.consulta form label {
+    grid-column: span 1;
+}
+
+.consulta form input,
+.consulta form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+.btn-outline {
+    text-decoration: dashed;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ff4c4c; /* Color del texto */
+    background-color: transparent;
+    border: 2px solid #ff4c4c;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: #e72b63; /* Fondo azul al hacer hover */
+    color: white; /* Texto blanco al hacer hover */
+}
+
+aside {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+aside .davipuntos, 
+aside .tipo-cambio {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Fabricio Agregue un acceso adicional para ver los graficos mas un enlace */
+
+.tipo-cambio a {
+    color: #ffffff; 
+    text-decoration: underline; 
+    font-weight: bold; 
+}
+
+/* Fabricio te agregue Efecto hover para el enlace */
+
+.tipo-cambio a:hover {
+    color: #ffe600; /* se va a cambiar color al pasar el mouse */
+    transition: color 0.3s ease; 
+}
+
+aside h2 {
+    margin-bottom: 10px;
+}
+
+/* Estilos Responsivos */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    header .mascot {
+        display: none; /* Ocultar imagen de Pikachu en pantallas pequeñas */
+    }
+
+    main {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .consulta {
+        width: 100%;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    .consulta form {
+        grid-template-columns: 1fr; /* Cambiar a una sola columna en formularios */
+    }
+
+    .consulta form button {
+        grid-column: span 1; /* El botón ocupará toda la fila */
+    }
+}
+
+/* Para pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+    header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .consulta {
+        width: 100%;
+    }
+
+    aside {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+

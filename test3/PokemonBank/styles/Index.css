@@ -1,0 +1,247 @@
+body {
+    
+    background-image: url('img/background.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 60px;
+    font-family: 'Arial', sans-serif;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: -1;
+}
+
+.navbar {
+    background-color: #ff3e4e !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 24px;
+    color: #ffffff !important;
+}
+
+.navbar-icon {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.login-card {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.login-card .card-header {
+    background-color: #FF7052;
+    color: white;
+    padding: 20px;
+}
+
+.pikachu-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #FFD700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.welcome-text {
+    color: #333;
+    margin-top: 15px;
+}
+
+.btn-primary {
+    background-color: #FF7052;
+    border-color: #FF7052;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #FF5733;
+    border-color: #FF5733;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #FF7052;
+    color: white;
+    padding: 15px 20px;
+}
+
+.card-header h3 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+}
+
+.footer {
+    background-image: url('img/footer.png');
+    background-size: cover;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.form-control {
+    border-radius: 20px;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #FF7052;
+    box-shadow: 0 0 0 0.2rem rgba(255, 112, 82, 0.25);
+}
+
+.btn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+
+/* Estilos para el pop-up */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-card {
+    background-color: white;
+    border-radius: 15px;
+    width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+.popup .card-header {
+    background-color: #FF7052;
+    color: white;
+    padding: 20px;
+}
+
+.popup .card-body {
+    padding: 30px;
+    background-color: white;
+}
+
+.popup .btn {
+    margin-top: 20px;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 350px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.chat-header {
+    padding: 15px 20px;
+    background: #FF7052;
+    color: white;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f8f9fa;
+    scrollbar-width: thin;
+}
+
+.chat-input {
+    padding: 15px;
+    border-top: 2px solid #f0f0f0;
+    display: flex;
+    background: white;
+    border-radius: 0 0 15px 15px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.chat-input input:focus {
+    border-color: #FF7052;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 12px 18px;
+    border-radius: 15px;
+    max-width: 80%;
+    animation: fadeIn 0.3s ease;
+}
+
+.bot-message {
+    background: white;
+    margin-right: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-message {
+    background: #FF7052;
+    color: white;
+    margin-left: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

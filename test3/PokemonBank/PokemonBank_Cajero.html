@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/Pokemonbank.css">
+    
+    <title>Menú ATM Pokémon Bank</title>
+</head>
+<body>   
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://cdn.pixabay.com/photo/2019/11/27/14/06/pokemon-4657023_960_720.png" alt="Icono de Pokémon" class="navbar-icon me-2">
+                Pokémon Bank ATM
+            </a>
+        </div>
+    </nav>
+        <div class="welcome-message">
+            <p><span class="username">Ash Ketchum</span> ha iniciado sesión</p>
+            <p>Cuenta 0987654321</p>
+        </div>
+        <div class="print-section"></div>
+            <div class="atm-menu">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="menu-list">
+                            <li>
+                                <!-- Botón para consultar saldo -->
+                                <a href="#saldoPopup" class="menu-button">Consultar Saldo</a>
+                                <div id="saldoPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Consultar Saldo</h2>
+                                        <div class="balance-info" id="balanceInfo"></div>
+                                        <p><span id="saldo-actual"></span></p>
+                                        <button id="consultar-saldo">Tu saldo es de:</button>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!-- Opción para retirar dinero -->
+                                <a href="#retirarPopup" class="menu-button">Retirar Efectivo</a>
+                                <div id="retirarPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Retirar Efectivo</h2>
+                                        <p>Ingrese la cantidad a retirar:</p>
+                                        <form action="#mensajeExitoso" method="GET"></form>
+                                            <input type="number" name="cantidadRetiro" placeholder="Cantidad a retirar" min="1" step="any" required>
+                                            <button type="submit" class="withdraw-btn">Retirar</button>
+                                        </form>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Popup de confirmación de retiro -->
+                            <div id="mensajeExitoso" class="popup-overlay">
+                                <div class="popup-content">
+                                    <h2>¡Retiro Exitoso!</h2>
+                                    <p>Haz realizado un retiro: <span id="cantidadRetiro"></span></p>
+                                    <p>Gracias por usar ATM Pokemon Bank</p>
+                                    <a href="#" class="close-btn">Cerrar</a>
+                                </div>
+                            </div>
+                            <li>
+                                
+                                <!-- Opción para depositar -->
+                                <a href="#depositarPopup" class="menu-button">Depositar</a>
+                                
+                                <div id="depositarPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Depositar</h2>
+                                        <p>Ingrese la cantidad a depositar:</p>
+                                        <input type="number" placeholder="Cantidad a depositar" class="form-control" />
+                                        <a href="#mensajeExito" class="confirm-btn">Confirmar</a>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Popup de éxito del depósito -->
+                            <div id="mensajeExito" class="popup-overlay">
+                                <div class="popup-content">
+                                    <h2>¡Éxito!</h2>
+                                    <p>Depósito realizado con éxito.</p>
+                                    <a href="#" class="close-btn">Cerrar</a>
+                                </div>
+                            </div>
+                            <li>
+                                <!-- Sección de recarga celular -->
+                                <a href="#recargaPopup" class="menu-button">Recargar Saldo Celular</a>
+                                <div id="recargaPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Recargar Saldo Celular</h2>
+                                        <p>Ingrese el número de teléfono:</p>
+                                        <input type="text" placeholder="Número de teléfono" class="form-control" />
+                                        <p>Ingrese la cantidad a recargar:</p>
+                                        <input type="number" placeholder="Cantidad a recargar" class="form-control" />
+                                        <!-- Botón de recarga -->
+                                        <a href="#confirmationPopup" class="recharge-btn">Recargar</a>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                                <!-- Popup de confirmación -->
+                                <div id="confirmationPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>¡Éxito!</h2>
+                                        <p>Tu recarga ha sido procesada.</p>
+                                        <span class="checkmark">✔️</span>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            
+                                <!-- Popup de error -->
+                                <div id="errorPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Error</h2>
+                                        <p>No pudimos procesar la recarga, intenta más tarde.</p>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            
+                                <!-- Simulación de error -->
+                                <a href="#errorPopup" style="display: none;" id="simulateError"></a> <!-- Este enlace es solo un marcador -->
+                            </li>
+                              <li>
+                                <a href="Movimientos.html" class="menu-button">Consultar Transacciones</a>
+                                <div id="consultarTransaccionesPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Consultar Transacciones</h2>
+                                        <p>Ingrese el rango de fechas para consultar:</p>
+                                        <form action="/consultar-transacciones" method="GET">
+                                            <input type="date" name="fechaInicio" class="form-control" required />
+                                            <input type="date" name="fechaFin" class="form-control" required />
+                                            <button type="submit">Consultar</button>
+                                        </form>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6">
+                        <ul class="menu-list">
+                            <li>
+                                <a href="#transferirPopup" class="menu-button">Transferir</a>
+                                <div id="transferirPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Transferir</h2>
+                                        <p>Ingrese los detalles de la transferencia:</p>
+                                        <label for="numeroCuenta">Número de Cuenta:</label>
+                                        <input type="text" id="numeroCuenta" name="numeroCuenta" maxlength="7" required pattern="\d{7}">
+                                        <input type="number" placeholder="Cantidad a transferir" class="form-control" />
+                                        <a href="#transferenciaExitosaPopup" class="send-btn">Enviar</a>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div id="transferenciaExitosaPopup" class="popup-overlay">
+                                <div class="popup-content">
+                                    <h2>¡Transferencia Exitosa!</h2>
+                                    <p>Su transferencia ha sido procesada correctamente.</p>
+                                    <a href="#" class="close-btn">Cerrar</a>
+                                </div>
+                            </div>
+                            
+                            <li>
+                                <a href="#recargarPopup" class="menu-button">Recargar Poké $</a>
+                                <div id="recargarPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Recargar Poké $</h2>
+                                        <p>Seleccione la cantidad de Poké $ a recargar:</p>
+                                        <input type="number" placeholder="Cantidad de Poké $" class="form-control" />
+                                        <a href="#recargaExitosaPopup" class="add-btn">Agregar</a>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div id="recargaExitosaPopup" class="popup-overlay">
+                                <div class="popup-content">
+                                    <h2>¡Recarga Exitosa!</h2>
+                                    <p>Tu recarga de Poké $ ha sido procesada correctamente.</p>
+                                    <a href="#" class="close-btn">Cerrar</a>
+                                </div>
+                            </div>
+                            <li>
+                                <a href="#pagoPopup" class="menu-button">Pagar Servicios</a>
+                                <div id="pagoPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Pagar Servicios</h2>
+                                        <p>Ingrese el código del servicio a pagar:</p>
+                                        <input type="text" placeholder="NPEXXXXXXXXXX" class="form-control" maxlength="12" pattern="^NPE\d{10}$" title="Formato: NPE seguido de 10 dígitos." required />
+                                        
+                                        <p>Seleccione el tipo de servicio:</p>
+                                        <select class="form-control" required>
+                                            <option value="" disabled selected>Seleccione un servicio</option>
+                                            <option value="agua">Agua</option>
+                                            <option value="luz">Luz</option>
+                                            <option value="internet">Internet</option>
+                                            <option value="telefono">Teléfono</option>
+                                            <option value="funeraria">Funerarias</option>
+                                        </select>
+                            
+                                        <div class="popup">
+                                            <div class="popup-content">
+                                                <h2>Datos de Pago</h2>
+                                                <form>
+                                                    <label for="cardName">Nombre en la tarjeta:</label>
+                                                    <input type="text" id="cardName" name="cardName" required>
+                                        
+                                                    <label for="cardNumber">Número de tarjeta:</label>
+                                                    <input type="text" id="cardNumber" name="cardNumber" required pattern="\d{16}" maxlength="16">
+                                        
+                                                    <label for="expMonth">Mes de expiración:</label>
+                                                    <input type="text" id="expMonth" name="expMonth" required pattern="\d{2}" maxlength="2">
+                                        
+                                                    <label for="expYear">Año de expiración:</label>
+                                                    <input type="text" id="expYear" name="expYear" required pattern="\d{2}" maxlength="2">
+                                        
+                                                    <label for="cvv">CVV:</label>
+                                                    <input type="text" id="cvv" name="cvv" required pattern="\d{3}" maxlength="3">
+                                        
+                                                    <button type="submit" id="confirmPayment">Confirmar Pago</button>
+                                                    <div id="paymentSuccessPopup" class="popup-overlay">
+                                                        <div class="popup-content">
+                                                            <h2>¡Pago Exitoso!</h2>
+                                                            <p>Tu pago ha sido procesado correctamente.</p>
+                                                            <span class="checkmark">✔️</span>
+                                                            <a href="#" class="close-btn">Cerrar</a>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <a href="#" class="close-btn" onclick="alert('Gracias por usar nuestros servicios.');">Cerrar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#cambiarPinPopup" class="menu-button">Cambiar PIN</a>
+                                <div id="cambiarPinPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Cambiar PIN</h2>
+                                        <p>Ingrese su PIN actual:</p>
+                                        <input type="password" placeholder="PIN actual" class="form-control" required />
+                                        <p>Ingrese su nuevo PIN:</p>
+                                        <input type="password" placeholder="Nuevo PIN" class="form-control" required />
+                                        <p>Confirme su nuevo PIN:</p>
+                                        <input type="password" placeholder="Confirmar nuevo PIN" class="form-control" required />
+                                        <a href="#cambioPinExitosoPopup" class="confirm-btn">Cambiar</a>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                                <div id="cambioPinExitosoPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>¡Cambio de PIN Exitoso!</h2>
+                                        <p>Su PIN ha sido cambiado correctamente.</p>
+                                        <a href="index.html" class="close-btn">Cerrar</a>
+                                    </div>
+                                </div>
+                            <li>
+                                <a href="#salirPopup" class="menu-button">Salir</a>
+                                <div id="salirPopup" class="popup-overlay">
+                                    <div class="popup-content">
+                                        <h2>Salir</h2>
+                                        <p>¿Está seguro de que desea salir?</p>
+                                        <a href="#" class="close-btn">Cerrar</a>
+                                        <a href="index.html" class="confirm-btn">Confirmar</a> <!-- Cambia 'ruta-a-la-pagina-de-salida' URL de fer -->
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+    <script src="./js/script1.js"></script>    
+</body>
+</html>
+
