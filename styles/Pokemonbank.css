@@ -1,3 +1,4 @@
+
 .container {
     width: 100%;
     max-width: 1200px; /* Ancho máximo opcional */
@@ -22,6 +23,7 @@
     margin-right: 10px;
     margin-left: 0;
 }
+
 
 
 .atm-header a {
@@ -240,3 +242,5 @@ body {
     border-radius: 5px;
     float: left;
 }
+
+

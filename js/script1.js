@@ -21,6 +21,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 text: 'Depósito realizado con éxito.',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: '¿Desea imprimir comprobante?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Sí',
+                        cancelButtonText: 'No'
+                    }).then((printResult) => {
+                        if (printResult.isConfirmed) {
+                            // Aquí iría la lógica de impresión
+                            console.log('Imprimiendo comprobante...');
+                            const contenidoComprobante = `
+                                === COMPROBANTE DE DEPÓSITO ===
+                                Fecha: ${new Date().toLocaleString()}
+                                Cantidad: $${cantidad}
+                                ID Transacción: ${Date.now()}
+                                ==============================
+                            `;
+                            const ventanaImpresion = window.open('', '', 'width=800,height=600');
+                            ventanaImpresion.document.write(`
+                                <html>
+                                    <head>
+                                        <style>
+                                            pre {
+                                                font-size: 24px;
+                                                font-family: monospace;
+                                                margin: 40px;
+                                                line-height: 1.5;
+                                            }
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <pre>${contenidoComprobante}</pre>
+                                    </body>
+                                </html>
+                            `);
+                            ventanaImpresion.print();
+                            ventanaImpresion.close();
+                        }
+                    });
+                }
             });
         }
     });
@@ -205,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         window.location.href = '#cambioPinExitosoPopup';
     });
+
 
     // Funcion que maneja la parte de pagar servicios
     document.getElementById('confirmPayment').addEventListener('click', function(e) {
