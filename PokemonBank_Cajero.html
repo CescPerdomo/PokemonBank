@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/Pokemonbank.css">
+    <link rel="stylesheet" href="./styles/Pokemonbank.css">
     
     <title>Menú ATM Pokémon Bank</title>
 </head>
@@ -29,22 +29,26 @@
                     <div class="col-md-6">
                         <ul class="menu-list">
                             <li>
+                                <!-- Botón para consultar saldo -->
                                 <a href="#saldoPopup" class="menu-button">Consultar Saldo</a>
                                 <div id="saldoPopup" class="popup-overlay">
                                     <div class="popup-content">
                                         <h2>Consultar Saldo</h2>
-                                        <p>Su saldo actual es de 1,000,000 PokéDólares.</p>
+                                        <div class="balance-info" id="balanceInfo"></div>
+                                        <p><span id="saldo-actual"></span></p>
+                                        <button id="consultar-saldo">Tu saldo es de:</button>
                                         <a href="#" class="close-btn">Cerrar</a>
                                     </div>
                                 </div>
                             </li>
                             <li>
+                                <!-- Opción para retirar dinero -->
                                 <a href="#retirarPopup" class="menu-button">Retirar Efectivo</a>
                                 <div id="retirarPopup" class="popup-overlay">
                                     <div class="popup-content">
                                         <h2>Retirar Efectivo</h2>
                                         <p>Ingrese la cantidad a retirar:</p>
-                                        <form action="#mensajeExitoso" method="GET">
+                                        <form action="#mensajeExitoso" method="GET"></form>
                                             <input type="number" name="cantidadRetiro" placeholder="Cantidad a retirar" min="1" step="any" required>
                                             <button type="submit" class="withdraw-btn">Retirar</button>
                                         </form>
@@ -53,6 +57,7 @@
                                 </div>
                             </li>
                             
+                            <!-- Popup de confirmación de retiro -->
                             <div id="mensajeExitoso" class="popup-overlay">
                                 <div class="popup-content">
                                     <h2>¡Retiro Exitoso!</h2>
@@ -62,6 +67,8 @@
                                 </div>
                             </div>
                             <li>
+                                
+                                <!-- Opción para depositar -->
                                 <a href="#depositarPopup" class="menu-button">Depositar</a>
                                 
                                 <div id="depositarPopup" class="popup-overlay">
@@ -75,6 +82,7 @@
                                 </div>
                             </li>
                             
+                            <!-- Popup de éxito del depósito -->
                             <div id="mensajeExito" class="popup-overlay">
                                 <div class="popup-content">
                                     <h2>¡Éxito!</h2>
@@ -83,6 +91,7 @@
                                 </div>
                             </div>
                             <li>
+                                <!-- Sección de recarga celular -->
                                 <a href="#recargaPopup" class="menu-button">Recargar Saldo Celular</a>
                                 <div id="recargaPopup" class="popup-overlay">
                                     <div class="popup-content">
@@ -91,7 +100,7 @@
                                         <input type="text" placeholder="Número de teléfono" class="form-control" />
                                         <p>Ingrese la cantidad a recargar:</p>
                                         <input type="number" placeholder="Cantidad a recargar" class="form-control" />
-                                        <!-- Enlace que simula el botón de recarga -->
+                                        <!-- Botón de recarga -->
                                         <a href="#confirmationPopup" class="recharge-btn">Recargar</a>
                                         <a href="#" class="close-btn">Cerrar</a>
                                     </div>
@@ -161,8 +170,6 @@
                                 </div>
                             </div>
                             
-                            
-                            
                             <li>
                                 <a href="#recargarPopup" class="menu-button">Recargar Poké $</a>
                                 <div id="recargarPopup" class="popup-overlay">
@@ -226,6 +233,7 @@
                                                             <p>Tu pago ha sido procesado correctamente.</p>
                                                             <span class="checkmark">✔️</span>
                                                             <a href="#" class="close-btn">Cerrar</a>
+                                                        
                                                         </div>
                                                     </div>
                                                 
@@ -272,10 +280,10 @@
                         </ul>
                     </div>
 
-                </div> <!-- Fin de la fila -->
-            </div> <!-- Fin del menú ATM -->
-        </div> <!-- Fin del contenedor -->
-    </div> <!-- Fin del fondo de navegación -->
+                </div> 
+            </div> 
+        </div> 
+    </div> 
     <script src="./js/script1.js"></script>    
 </body>
 </html>
