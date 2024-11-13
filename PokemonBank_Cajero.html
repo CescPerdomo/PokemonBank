@@ -23,7 +23,13 @@
             <p><span class="username">Ash Ketchum</span> ha iniciado sesión</p>
             <p>Cuenta 0987654321</p>
         </div>
-        
+        <div class="account-balance">
+            <p>Saldo Inicial: $<span id="saldo">500.00</span></p>
+        </div>
+        <script>
+            
+        </script>
+        <div class="print-section"></div>
             <div class="atm-menu">
                 <div class="row">
                     <div class="col-md-6">
@@ -127,7 +133,7 @@
                                 <!-- Simulación de error -->
                                 <a href="#errorPopup" style="display: none;" id="simulateError"></a> <!-- Este enlace es solo un marcador -->
                             </li>
-                              <li>
+                            <li>
                                 <a href="Movimientos.html" class="menu-button">Consultar Transacciones</a>
                                 <div id="consultarTransaccionesPopup" class="popup-overlay">
                                     <div class="popup-content">
@@ -144,8 +150,13 @@
                             </li>
                             
                         </ul>
+                        <ul class="menu-list">
+                            <li>
+                                <a href="grafica.html" class="menu-button">Gráficos</a>
+                            </li>
+                        </ul>
                     </div>
-
+                    
                     <div class="col-md-6">
                         <ul class="menu-list">
                             <li>
@@ -277,6 +288,7 @@
                                     </div>
                                 </div>
                             </li>
+
                         </ul>
                     </div>
 
@@ -287,3 +299,4 @@
     <script src="./js/script1.js"></script>    
 </body>
 </html>
+
